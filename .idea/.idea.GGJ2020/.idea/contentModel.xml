@@ -21,8 +21,21 @@
             <e p="readme.txt" t="Include" />
           </e>
         </e>
+        <e p="GlitchyShaderAssets" t="Include">
+          <e p="Scripts" t="Include">
+            <e p="GlitchCameraShader.cs" t="Include" />
+            <e p="MobileGlitchCameraShader.cs" t="Include" />
+            <e p="SimpleRotator.cs" t="Include" />
+          </e>
+          <e p="Shaders" t="Include">
+            <e p="GlitchCameraShader.shader" t="Include" />
+            <e p="MobileGlitchCameraShader.shader" t="Include" />
+            <e p="noiseSimplex.cginc" t="Include" />
+          </e>
+        </e>
         <e p="Scripts" t="Include">
           <e p="CortanaController.cs" t="Include" />
+          <e p="GameManager.cs" t="Include" />
           <e p="UindowsManager.cs" t="Include" />
         </e>
         <e p="TextMesh Pro" t="Include">
