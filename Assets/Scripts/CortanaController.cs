@@ -4,6 +4,7 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CortanaController : MonoBehaviour {
 
@@ -11,9 +12,13 @@ public class CortanaController : MonoBehaviour {
     private Text m_cortanaMessage;
     private float errorTime = 0;
 
+    
+    public GameObject _404;
+    public GameObject bluePanel;
 
     private IEnumerator Start() {
         m_cortanaMessage.text = "...";
+        bluePanel.SetActive(false);
         yield return new WaitForSeconds(2.0f);
 
         m_cortanaMessage.DOText("Hi, I'm Cortin@", 2.3f, true, ScrambleMode.Lowercase)
@@ -24,12 +29,20 @@ public class CortanaController : MonoBehaviour {
         yield return new WaitForSeconds(4.8f);
 
         if (errorTime < 2) {
-            m_cortanaMessage.DOText("Erros found, time to reboot....", 2.8f, true, ScrambleMode.All)
-                .OnComplete(() => {
-                    new WaitForSeconds(3.0f);
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);  /* RELOAD */
-                    Debug.Log("REBOOT");
-                });
+            Tween errorTween  = m_cortanaMessage.DOText("Erros found, time to reboot....", 2.8f, true, ScrambleMode.All);
+            yield return errorTween.WaitForCompletion();
+
+            bluePanel.SetActive(true);
+
+            Tween myTween = _404.transform.DOScaleX(-40.0f, 2.5f);
+            yield return myTween.WaitForCompletion();
+            
+
+            bluePanel.SetActive(false);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);  /* RELOAD */
+            Debug.Log("REBOOT");
+
+
         } else {
             m_cortanaMessage.DOText("Everithing is okay.. \n Game Time \n Go and Fiix your Uindows®", 2.8f, true, ScrambleMode.Lowercase)
                 .OnComplete(() => { /*SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1) /* NEXT */
