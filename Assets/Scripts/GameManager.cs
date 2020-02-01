@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private Image m_progressBar;
@@ -20,7 +21,14 @@ public class GameManager : MonoBehaviour
 
         m_progressBar.fillAmount = m_progressPercent;
         m_progressPercent -= Time.deltaTime / 30;
-        PercentProgres.text = (m_progressPercent*100).ToString("00");
+        PercentProgres.text = (m_progressPercent*100).ToString("00") + "%";
+        
+        //VITORIA
+
+        if (m_progressPercent * 100 >= 110)
+        {
+            SceneManager.LoadScene(4);
+        }
         
         if (Input.GetKeyUp(KeyCode.Space)) {
             
@@ -31,6 +39,7 @@ public class GameManager : MonoBehaviour
             if (rand > 0 && rand <= 1)
             {
                 Debug.Log("CRASHPU");
+                SceneManager.LoadScene(2);
             }
         }
     }

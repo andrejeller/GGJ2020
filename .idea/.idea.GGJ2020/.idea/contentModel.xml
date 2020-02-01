@@ -36,7 +36,10 @@
         <e p="Scripts" t="Include">
           <e p="CortanaController.cs" t="Include" />
           <e p="GameManager.cs" t="Include" />
+          <e p="TelaAzul.cs" t="Include" />
           <e p="UindowsManager.cs" t="Include" />
+          <e p="Virotia.cs" t="Include" />
+          <e p="voltar.cs" t="Include" />
         </e>
         <e p="TextMesh Pro" t="Include">
           <e p="Fonts" t="Include">

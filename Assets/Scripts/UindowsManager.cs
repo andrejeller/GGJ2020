@@ -19,24 +19,24 @@ public class UindowsManager : MonoBehaviour
 
     
     void Update() {
-        if (Input.anyKey) {
-            if ((Random.Range(0.0f, 100.0f)%2) == 0) {
+        if (Input.anyKeyDown) {
+            if (Random.Range(0.0f, 100.0f) <= 100.0f) {
                 audioSource.clip = crashSound;
                 audioSource.Play();
-                StartCoroutine(ChangeScene("GameScene"));
+                StartCoroutine(ChangeScene(2));
             }
             else {
                 audioSource.clip = crashSound;
                 audioSource.Play();
-                StartCoroutine(ChangeScene("WelcomeScreen"));
+                StartCoroutine(ChangeScene(0));
             }
         }
         
     }
 
-    IEnumerator ChangeScene(String sceneName) {
-        yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene(sceneName);
+    IEnumerator ChangeScene(int scene) {
+        yield return new WaitForSeconds(0.0f);
+        SceneManager.LoadScene(scene);
     }
      
 }

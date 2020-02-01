@@ -45,7 +45,9 @@ public class CortanaController : MonoBehaviour {
 
         } else {
             m_cortanaMessage.DOText("Everithing is okay.. \n Game Time \n Go and Fiix your Uindows®", 2.8f, true, ScrambleMode.Lowercase)
-                .OnComplete(() => { /*SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1) /* NEXT */
+                .OnComplete(() =>
+                {
+                    SceneManager.LoadScene(1); /* NEXT */
                     new WaitForSeconds(4.0f);
                     Debug.Log("NEXT");
                 });
