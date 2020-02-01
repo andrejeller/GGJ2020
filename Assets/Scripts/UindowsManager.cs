@@ -1,40 +1,42 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class UindowsManager : MonoBehaviour
 {
     public AudioSource audioSource;
     public AudioClip welcomeSound,crashSound;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
+
+
+    void Start() {
         audioSource.clip = welcomeSound;
         audioSource.Play();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.anyKey)
-        {
-            if ((Random.Range(0.0f, 100.0f)%2) == 0)
-            {
+    
+    void Update() {
+        if (Input.anyKey) {
+            if ((Random.Range(0.0f, 100.0f)%2) == 0) {
                 audioSource.clip = crashSound;
                 audioSource.Play();
-                SceneManager.LoadScene("GameScene");
+                StartCoroutine(ChangeScene("GameScene"));
             }
-            else
-            {
+            else {
                 audioSource.clip = crashSound;
                 audioSource.Play();
-                SceneManager.LoadScene("WelcomeScreen");
+                StartCoroutine(ChangeScene("WelcomeScreen"));
             }
         }
         
     }
-    
+
+    IEnumerator ChangeScene(String sceneName) {
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(sceneName);
+    }
      
 }
